@@ -3,6 +3,6 @@
   "clientId": "InExRXeBh0ARCpWdbaJ6vegE0KqeQnBJ",
   "authorizationParams": {},
   "apiUri": "http://localhost:3001",
-  "appUri": "http://localhost:4200",
+  "appUri": "https://tapestry-sso-demo-143953393724.us-west4.run.app",
   "errorPath": "/error"
 }
