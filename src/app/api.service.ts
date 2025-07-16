@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import config from '../../auth_config.json';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +8,10 @@ import config from '../../auth_config.json';
 export class ApiService {
   constructor(private http: HttpClient) {}
 
-  ping$() {
-    return this.http.get(`${config.apiUri}/api/external`);
+  ping$(): Observable<any> {
+    // No API needed - just return a mock response
+    return of({
+      msg: 'Frontend-only app - no API calls needed!',
+    });
   }
 }

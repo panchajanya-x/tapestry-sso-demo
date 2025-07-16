@@ -13,31 +13,18 @@ RUN npm install --legacy-peer-deps
 
 COPY . .
 
-RUN npm run build
+RUN npm run prod
 
 # -----------------
 
-FROM node:18-alpine
+FROM nginx:alpine
 
-RUN mkdir -p /app
+# Copy the built Angular app to nginx html directory
+COPY --from=build /app/dist/login-demo /usr/share/nginx/html
 
-WORKDIR /app
+# Copy custom nginx configuration
+COPY nginx.conf /etc/nginx/nginx.conf
 
-COPY package.json .
-COPY package-lock.json .
+EXPOSE 8080
 
-RUN npm install --production --legacy-peer-deps
-
-COPY --from=build ./app/dist/login-demo ./dist
-COPY ./server.js .
-COPY ./api-server.js .
-COPY ./auth_config.json .
-
-ENV NODE_ENV=production
-ENV SERVER_PORT=4200
-ENV API_SERVER_PORT=3001
-
-EXPOSE 4200
-EXPOSE 3001
-
-CMD ["npm", "run", "prod"]
+CMD ["nginx", "-g", "daemon off;"]

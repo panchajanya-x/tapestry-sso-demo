@@ -2,7 +2,7 @@
   "domain": "tapestry-x-dev.us.auth0.com",
   "clientId": "InExRXeBh0ARCpWdbaJ6vegE0KqeQnBJ",
   "authorizationParams": {},
-  "apiUri": "http://localhost:3001",
+  "apiUri": "",
   "appUri": "http://localhost:4200",
   "errorPath": "/error"
 }

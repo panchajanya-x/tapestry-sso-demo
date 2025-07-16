@@ -16,12 +16,12 @@ export const environment = {
     domain,
     clientId,
     authorizationParams: {
-      ...(audience && audience !== 'PROD_API_IDENTIFIER_TO_BE_REPLACED' ? { audience } : null),
+      ...(audience && audience !== '' ? { audience } : null),
       redirect_uri: window.location.origin,
     },
     errorPath,
   },
   httpInterceptor: {
-    allowedList: [`${apiUri}/*`],
+    allowedList: apiUri ? [`${apiUri}/*`] : [],
   },
 };
